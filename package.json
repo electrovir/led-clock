@@ -1,0 +1,17 @@
+{
+    "name": "led-clock",
+    "version": "1.0.0",
+    "description": "",
+    "license": "MIT",
+    "author": "",
+    "keywords": [],
+    "main": "index.js",
+    "scripts": {
+        "compile": "tsc",
+        "start": "npm run compile && node dist/index.js"
+    },
+    "dependencies": {
+        "typescript": "^3.8.2",
+        "ws2812draw": "^2.0.1"
+    }
+}
