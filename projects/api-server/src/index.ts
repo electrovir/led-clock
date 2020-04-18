@@ -22,6 +22,7 @@ import {networkInterfaces} from 'os';
 import {createConnection} from 'net';
 import {SOCKET_ADDRESS} from '../../clock-socket/clock-socket-address';
 
+const thing = ['hello'];
 // const socket = new Socket();
 // socket.connect(SOCKET_ADDRESS, () => {});
 
