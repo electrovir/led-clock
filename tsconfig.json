@@ -1,17 +1,11 @@
 {
     "compilerOptions": {
-        "declaration": true,
-        "esModuleInterop": true,
+        "baseUrl": "projects",
         "forceConsistentCasingInFileNames": true,
         "module": "commonjs",
         "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "outDir": "dist",
-        "rootDir": "src",
-        "skipLibCheck": true,
+        "rootDir": "projects",
         "strict": true,
         "target": "es6"
-    },
-    "exclude": ["node_modules", ".git", "dist"]
+    }
 }

@@ -1,0 +1,23 @@
+{
+    "checkDirectory": "projects",
+    "imports": {
+        "api": {
+            "allow": []
+        },
+        "api-server": {
+            "allow": ["util", "api", "clock-socket"]
+        },
+        "clock": {
+            "allow": ["util", "clock-socket"]
+        },
+        "clock-socket": {
+            "allow": ["util"]
+        },
+        "front-end": {
+            "allow": ["util"]
+        },
+        "util": {
+            "allow": []
+        }
+    }
+}
