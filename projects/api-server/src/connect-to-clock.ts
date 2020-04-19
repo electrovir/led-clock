@@ -1,7 +1,14 @@
-import {createConnection, Socket} from 'net';
+import {
+    Socket,
+    createConnection,
+} from 'net';
+
 import {SOCKET_ADDRESS} from 'clock-socket/clock-socket-address';
-import {ClockMessage, IdClockMessage, ClockSocketEmitter, createIdMessage} from 'clock-socket/clock-socket-emitter';
-import {randomBytes} from 'crypto';
+import {
+    ClockSocketEmitter,
+    IdClockMessage,
+    createIdMessage,
+} from 'clock-socket/clock-socket-emitter';
 
 const client = createConnection(SOCKET_ADDRESS);
 

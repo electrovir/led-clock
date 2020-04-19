@@ -1,6 +1,10 @@
 import {randomBytes} from 'crypto';
 import {EventEmitter} from 'events';
-import {getEnumTypedValues, isValueInEnum} from 'util/object';
+import {
+    getEnumTypedValues,
+    isValueInEnum,
+} from 'util/object';
+
 import {LedColor} from 'ws2812draw';
 
 export interface ClockSocketEmitter {
@@ -9,7 +13,7 @@ export interface ClockSocketEmitter {
     once(type: 'message', listener: (message: ClockMessage) => void): this;
 }
 
-export const ClockSocketEmitter = (function (this: ClockSocketEmitter) {} as any) as {new (): ClockSocketEmitter};
+export const ClockSocketEmitter = (function(this: ClockSocketEmitter) {} as any) as {new (): ClockSocketEmitter};
 ClockSocketEmitter.prototype = EventEmitter.prototype;
 
 export type ClockMessage =

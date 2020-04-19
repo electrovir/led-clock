@@ -4,23 +4,158 @@
         "es6": true,
         "node": true
     },
-    "extends": ["plugin:@typescript-eslint/eslint-recommended", "eslint:recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:import/typescript"
+    ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "overrides": [
+        {
+            "files": ["*.json"],
+            "rules": {
+                "comma-dangle": [
+                    "error",
+                    "never"
+                ],
+                "max-len": "off",
+                "no-multiple-empty-lines": [
+                    "error",
+                    {
+                        "max": 0
+                    }
+                ],
+                "quotes": [
+                    "error",
+                    "double"
+                ],
+                "semi": "off"
+            }
+        },
+        {
+            "files": ["package.json"],
+            "rules": {
+                "sort-keys-fix/sort-keys-fix": "off"
+            }
+        }
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+        "unused-imports",
+        "@typescript-eslint",
+        "import",
+        "sort-keys-fix",
+        "modules-newline"
+    ],
     "rules": {
-        "array-bracket-newline": ["error", "always"],
-        "array-element-newline": ["error", "always"],
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "single"],
-        "semi": ["error", "always"]
+        "@typescript-eslint/ban-ts-comment": "error",
+        "@typescript-eslint/class-literal-property-style": [
+            "error",
+            "fields"
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            {
+                "accessibility": "explicit"
+            }
+        ],
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/member-delimiter-style": "error",
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "array-bracket-newline": [
+            "error",
+            {
+                "minItems": 2
+            }
+        ],
+        "array-element-newline": [
+            "error",
+            "always"
+        ],
+        "brace-style": "error",
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "comma-spacing": "error",
+        "eol-last": "error",
+        "func-call-spacing": "error",
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "builtin",
+                    "parent"
+                ],
+                "newlines-between": "always"
+            }
+        ],
+        "indent": "off",
+        "key-spacing": "error",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ],
+        "modules-newline/export-declaration-newline": "error",
+        "modules-newline/import-declaration-newline": "error",
+        "no-extra-parens": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "no-unused-vars": "off",
+        "no-var": "error",
+        "object-curly-newline": [
+            "error",
+            {
+                "ObjectPattern": {
+                    "minProperties": 2,
+                    "multiline": true
+                }
+            }
+        ],
+        "object-curly-spacing": "error",
+        "object-property-newline": "error",
+        "object-shorthand": [
+            "error",
+            "always"
+        ], 
+        "prefer-const": "error",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "sort-keys-fix/sort-keys-fix": "error",
+        "space-before-function-paren": [
+            "error",
+            "never"
+        ],
+        "space-unary-ops": "error",
+        "unused-imports/no-unused-imports-ts": "error"
     }
 }

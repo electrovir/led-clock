@@ -1,5 +1,7 @@
-import {createWebServer} from './server';
-import {networkInterfaces} from 'os';
+
+import {createConnection} from 'net';
+
+import {SOCKET_ADDRESS} from '../../clock-socket/clock-socket-address';
 
 // const apiPort = Number(process.argv[2]) || 8001;
 // const localIps = {eth: networkInterfaces().eth0[0].address, wlan: networkInterfaces().wlan0[0].address};
@@ -18,9 +20,6 @@ import {networkInterfaces} from 'os';
 //     };
 //     clockEmitter.emit('config-update', configUpdate);
 // });
-
-import {createConnection} from 'net';
-import {SOCKET_ADDRESS} from '../../clock-socket/clock-socket-address';
 
 const thing = ['hello'];
 // const socket = new Socket();

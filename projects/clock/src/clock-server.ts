@@ -1,8 +1,12 @@
 import {createServer} from 'net';
-import {SOCKET_ADDRESS} from 'clock-socket/clock-socket-address';
 import {unlinkSync} from 'fs';
+
+import {SOCKET_ADDRESS} from 'clock-socket/clock-socket-address';
 import {addExitCallback} from 'catch-exit';
-import {ClockMessage, validateClockMessage} from 'clock-socket/clock-socket-emitter';
+import {
+    ClockMessage,
+    validateClockMessage,
+} from 'clock-socket/clock-socket-emitter';
 
 function main() {
     const unixSocketServer = createServer();
@@ -36,6 +40,6 @@ function readSocketData(data: Buffer): ClockMessage {
     if (validateClockMessage(json)) {
         return json;
     } else {
-        throw new Error(`Invalid socket data`);
+        throw new Error('Invalid socket data');
     }
 }

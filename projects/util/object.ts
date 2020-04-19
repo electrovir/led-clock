@@ -22,13 +22,15 @@ export function getEnumTypedValues<T extends object>(input: T): T[keyof T][] {
     return keys.map(key => input[key]);
 }
 
-export function isKeyInEnum<T extends object>(checkEnum: T, key: any): key is keyof T {
+export
+function isKeyInEnum<T extends object>(checkEnum: T, key: any): key is keyof T {
     if (typeof key === 'string') {
         return getEnumTypedKeys(checkEnum).includes(key as any);
     }
     return false;
 }
 
-export function isValueInEnum<T extends object>(checkEnum: T, value: any): value is T {
+export
+function isValueInEnum<T extends object>(checkEnum: T, value: any): value is T {
     return value != undefined && getEnumTypedValues(checkEnum).includes(value);
 }

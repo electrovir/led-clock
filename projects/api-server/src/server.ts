@@ -1,12 +1,26 @@
+import {EventEmitter} from 'events';
+
+import {isKeyInEnum} from '../../util/object';
+
 import * as express from 'express';
 import * as cors from 'cors';
-import {EventEmitter} from 'events';
 import {CorsOptions} from 'cors';
-import {isKeyInEnum} from '../../util/object';
 import {LedColor} from 'ws2812draw';
-import {NextFunction, Request, Response} from 'express';
+import {
+    NextFunction,
+    Request,
+    Response,
+} from 'express';
 
 const originWhitelist = ['http://localhost'];
+
+const x = 'x';
+
+const thing = {
+    lame: 'hh',
+    what: 'who',
+    x,
+};
 
 const corsOptions: CorsOptions = {
     origin: (origin, callback) => {

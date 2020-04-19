@@ -1,6 +1,12 @@
-import {LedColor, drawText, MatrixPaddingOption} from 'ws2812draw';
 import {EventEmitter} from 'events';
+
 import {overrideDefinedProperties} from '../../util/object';
+
+import {
+    LedColor,
+    MatrixPaddingOption,
+    drawText,
+} from 'ws2812draw';
 
 type ClockConfig = {
     timeFormat: 24 | 12;
@@ -16,12 +22,12 @@ export type TextConfig = {
 };
 
 const defaultConfig: ClockConfig = {
-    timeFormat: 24,
+    backgroundColor: LedColor.BLACK,
     checkIntervalMs: 500,
     displayWidth: 32,
     foregroundColor: LedColor.CYAN,
-    backgroundColor: LedColor.BLACK,
     running: true,
+    timeFormat: 24,
 };
 
 export interface ClockEmitter extends EventEmitter {
@@ -60,7 +66,7 @@ function getFormattedTimeString(now: Date, config: ClockConfig) {
 }
 
 export function startClock(inputConfig: Partial<ClockConfig> = {}) {
-    let config = overrideDefinedProperties(defaultConfig, inputConfig);
+    const config = overrideDefinedProperties(defaultConfig, inputConfig);
 
     let lastTime = '';
     const emitter = new EventEmitter() as ClockEmitter;
@@ -83,13 +89,24 @@ export function startClock(inputConfig: Partial<ClockConfig> = {}) {
         const timeString = getFormattedTimeString(now, config);
 
         const textOptions = [
-            {foregroundColor: config.foregroundColor, backgroundColor: config.backgroundColor, monospace: true},
-            {foregroundColor: config.foregroundColor, backgroundColor: config.backgroundColor, monospace: false},
+            {
+                backgroundColor: config.backgroundColor,
+                foregroundColor: config.foregroundColor,
+                monospace: true,
+            },
+            {
+                backgroundColor: config.backgroundColor,
+                foregroundColor: config.foregroundColor,
+                monospace: false,
+            },
         ];
 
         if (lastTime !== timeString) {
             lastTime = timeString;
-            drawText(50, timeString, textOptions, {padding: MatrixPaddingOption.BOTH, width: config.displayWidth});
+            drawText(50, timeString, textOptions, {
+                padding: MatrixPaddingOption.BOTH,
+                width: config.displayWidth,
+            });
             // emitter.emit('clock-updated', now);
         }
         if (config.running) {
