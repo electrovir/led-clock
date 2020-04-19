@@ -5,10 +5,17 @@
             "allow": []
         },
         "api-server": {
-            "allow": ["util", "api", "clock-socket"]
+            "allow": [
+                "util",
+                "api",
+                "clock-socket"
+            ]
         },
         "clock": {
-            "allow": ["util", "clock-socket"]
+            "allow": [
+                "util",
+                "clock-socket"
+            ]
         },
         "clock-socket": {
             "allow": ["util"]
