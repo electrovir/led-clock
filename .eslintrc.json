@@ -15,8 +15,16 @@
     },
     "overrides": [
         {
-            "files": ["*.json"],
+            "files": [
+                "*.json"
+            ],
             "rules": {
+                "array-bracket-newline": [
+                    "error",
+                    {
+                        "minItems": 1
+                    }
+                ],
                 "comma-dangle": [
                     "error",
                     "never"
@@ -25,8 +33,16 @@
                 "no-multiple-empty-lines": [
                     "error",
                     {
-                        "max": 0
+                        "max": 2
                     }
+                ],
+                "object-curly-newline": [
+                    "error",
+                    "always"
+                ],
+                "quote-props": [
+                    "error",
+                    "always"
                 ],
                 "quotes": [
                     "error",
@@ -36,7 +52,9 @@
             }
         },
         {
-            "files": ["package.json"],
+            "files": [
+                "package.json"
+            ],
             "rules": {
                 "sort-keys-fix/sort-keys-fix": "off"
             }
@@ -52,7 +70,8 @@
         "@typescript-eslint",
         "import",
         "sort-keys-fix",
-        "modules-newline"
+        "modules-newline",
+        "typescript-sort-keys"
     ],
     "rules": {
         "@typescript-eslint/ban-ts-comment": "error",
@@ -117,6 +136,11 @@
         ],
         "modules-newline/export-declaration-newline": "error",
         "modules-newline/import-declaration-newline": "error",
+        "multiline-ternary": [
+            "error",
+            "always-multiline"
+        ],
+        "newline-per-chained-call": "error",
         "no-extra-parens": "error",
         "no-multiple-empty-lines": [
             "error",
@@ -124,11 +148,24 @@
                 "max": 1
             }
         ],
+        "no-trailing-spaces": "error",
         "no-unused-vars": "off",
         "no-var": "error",
         "object-curly-newline": [
             "error",
             {
+                "ExportDeclaration": {
+                    "minProperties": 2,
+                    "multiline": true
+                },
+                "ImportDeclaration": {
+                    "minProperties": 2,
+                    "multiline": true
+                },
+                "ObjectExpression": {
+                    "minProperties": 2,
+                    "multiline": true
+                },
                 "ObjectPattern": {
                     "minProperties": 2,
                     "multiline": true
@@ -140,7 +177,15 @@
         "object-shorthand": [
             "error",
             "always"
-        ], 
+        ],
+        "one-var": [
+            "error",
+            {
+                "const": "never",
+                "let": "never",
+                "var": "never"
+            }
+        ],
         "prefer-const": "error",
         "quotes": [
             "error",
@@ -156,6 +201,8 @@
             "never"
         ],
         "space-unary-ops": "error",
+        "typescript-sort-keys/interface": "error",
+        "typescript-sort-keys/string-enum": "error",
         "unused-imports/no-unused-imports-ts": "error"
     }
 }

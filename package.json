@@ -8,21 +8,17 @@
     "author": "",
     "main": "index.js",
     "scripts": {
-        "check": "insulate",
-        "compile": "tsc",
-        "insulate": "insulate",
-        "lint": "depcheck --skip-missing=true; sort-package-json --check package.json ./projects/**/package.json; eslint **/*.ts **/*.json",
+        "lint": "depcheck --skip-missing=true; sort-package-json --check package.json ./projects/**/package.json; eslint **/*.ts **/*.json; insulate",
         "lint:fix": "depcheck --skip-missing=true && sort-package-json package.json ./projects/**/package.json && eslint --fix **/*.ts **/*.json",
         "start": "node dist/index.js",
         "start-detached": "node dist/index.js & echo $!",
         "test": "npm run compile && npm start",
-        "test:clock-socket": "ts-node projects/clock/src/clock-server.ts && ts-node projects/api-server/src/",
+        "test:clock-socket": "ts-node -r tsconfig-paths/register projects/clock/src/clock-server.ts && ts-node -r tsconfig-paths/register projects/api-server/src/index.ts",
         "test:insulate": "node --inspect-brk node_modules/insulation/src/cli.js"
     },
     "dependencies": {
         "catch-exit": "1.0.2",
         "cors": "2.8.5",
-        "eslint-plugin-modules-newline": "0.0.2",
         "express": "4.17.1",
         "ws2812draw": "2.0.2"
     },
@@ -35,11 +31,14 @@
         "depcheck": "0.9.2",
         "eslint": "6.8.0",
         "eslint-plugin-import": "2.20.2",
+        "eslint-plugin-modules-newline": "0.0.2",
         "eslint-plugin-sort-keys-fix": "1.1.0",
+        "eslint-plugin-typescript-sort-keys": "0.8.0",
         "eslint-plugin-unused-imports": "0.1.2",
-        "insulation": "2.2.0",
+        "insulation": "3.0.1",
         "sort-package-json": "1.42.0",
         "ts-node": "8.8.2",
+        "tsconfig-paths": "3.9.0",
         "typescript": "3.8.3"
     }
 }

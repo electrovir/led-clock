@@ -4,11 +4,11 @@ import {
 } from 'net';
 
 import {SOCKET_ADDRESS} from 'clock-socket/clock-socket-address';
+import {ClockSocketEmitter} from 'clock-socket/clock-socket-emitter';
 import {
-    ClockSocketEmitter,
     IdClockMessage,
     createIdMessage,
-} from 'clock-socket/clock-socket-emitter';
+} from 'clock-socket/clock-message';
 
 const client = createConnection(SOCKET_ADDRESS);
 
@@ -38,4 +38,8 @@ export async function createClientClockSocket(): Promise<ClockSocketEmitter> {
             resolve(socketEmitter);
         });
     });
+}
+
+function startClock() {
+
 }

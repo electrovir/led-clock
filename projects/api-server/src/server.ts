@@ -35,23 +35,23 @@ const corsOptions: CorsOptions = {
 
 export interface ServerEmitter extends EventEmitter {
     emit(type: 'color-change', color: LedColor): boolean;
-    on(type: 'color-change', listener: (color: LedColor) => void): this;
-    once(type: 'color-change', listener: (color: LedColor) => void): this;
-
     emit(type: 'custom-string', custom: string): boolean;
-    on(type: 'custom-string', listener: (custom: string) => void): this;
-    once(type: 'custom-string', listener: (custom: string) => void): this;
+    emit(type: 'start-server', port: number): boolean;
 
     emit(type: 'server-started', port: number): boolean;
-    on(type: 'server-started', listener: (port: number) => void): this;
-    once(type: 'server-started', listener: (port: number) => void): this;
-
     emit(type: 'stop-server'): boolean;
+    on(type: 'color-change', listener: (color: LedColor) => void): this;
+
+    on(type: 'server-started', listener: (port: number) => void): this;
+    on(type: 'custom-string', listener: (custom: string) => void): this;
+    on(type: 'start-server', listener: (port: number) => void): this;
+
     on(type: 'stop-server', listener: () => void): this;
+    once(type: 'custom-string', listener: (custom: string) => void): this;
     once(type: 'stop-server', listener: () => void): this;
 
-    emit(type: 'start-server', port: number): boolean;
-    on(type: 'start-server', listener: (port: number) => void): this;
+    once(type: 'server-started', listener: (port: number) => void): this;
+    once(type: 'color-change', listener: (color: LedColor) => void): this;
     once(type: 'start-server', listener: (port: number) => void): this;
 }
 

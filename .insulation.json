@@ -18,13 +18,20 @@
             ]
         },
         "clock-socket": {
-            "allow": ["util"]
+            "allow": [
+                "util"
+            ]
         },
         "front-end": {
-            "allow": ["util"]
+            "allow": [
+                "util"
+            ]
         },
         "util": {
             "allow": []
         }
+    },
+    "options": {
+        "baseDir": "/home/pi/repos/led-clock/projects"
     }
 }
