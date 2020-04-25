@@ -4,9 +4,7 @@ import {
 } from 'insulation';
 
 async function main() {
-    const {
-        invalidDeps, modules,
-    } = await insulate(readInsulationConfigFile('./.insulation.json'), './projects', true);
+    const {modules} = await insulate(readInsulationConfigFile('./.insulation.json'), true);
     console.log(JSON.stringify(modules, null, 4));
 }
 

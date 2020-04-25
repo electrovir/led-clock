@@ -1,6 +1,6 @@
 {
     "name": "led-clock",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "private": true,
     "description": "",
     "keywords": [],
@@ -8,8 +8,9 @@
     "author": "",
     "main": "index.js",
     "scripts": {
+        "check": "tsc; npm run lint;",
         "lint": "depcheck --skip-missing=true; sort-package-json --check package.json ./projects/**/package.json; eslint **/*.ts **/*.json; insulate",
-        "lint:fix": "depcheck --skip-missing=true && sort-package-json package.json ./projects/**/package.json && eslint --fix **/*.ts **/*.json",
+        "lint:fix": "sort-package-json package.json ./projects/**/package.json && eslint --fix **/*.ts **/*.json",
         "start": "node dist/index.js",
         "start-detached": "node dist/index.js & echo $!",
         "test": "npm run compile && npm start",
@@ -20,7 +21,7 @@
         "catch-exit": "1.0.2",
         "cors": "2.8.5",
         "express": "4.17.1",
-        "ws2812draw": "2.0.2"
+        "ws2812draw": "2.4.0"
     },
     "devDependencies": {
         "@types/cors": "2.8.6",

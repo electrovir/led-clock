@@ -3,6 +3,7 @@
         "baseUrl": "projects",
         "forceConsistentCasingInFileNames": true,
         "module": "commonjs",
+        "noEmit": true,
         "noImplicitReturns": true,
         "rootDir": "projects",
         "strict": true,

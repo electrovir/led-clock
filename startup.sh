@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-sudo -E env "PATH=$PATH" ts-node -r tsconfig-paths/register projects/clock/src/clock-server.ts &
+# tsconfig-paths is needed here to make ts-node read the tsconfig baseUrl correctly
+sudo -E env "PATH=$PATH" ts-node -r tsconfig-paths/register projects/clock/src/clock-server.ts -f &
 clockServerPid=$(echo $!)
 
 ts-node -r tsconfig-paths/register projects/api-server/src/api-server.ts &

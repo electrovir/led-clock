@@ -18,17 +18,9 @@ import {
     assertValidClockMessage,
 } from 'clock-socket/clock-message';
 
-function main() {
+function main(force = false) {
     const unixSocketServer = createServer();
     const clockEmitter = startClock();
-
-    unixSocketServer.listen({
-        path: SOCKET_ADDRESS,
-        readableAll: true,
-        writableAll: true,
-    }, () => {
-        console.log(`Unix socket server listening at ${SOCKET_ADDRESS}`);
-    });
 
     unixSocketServer.on('connection', socket => {
         console.log('connection started...');
@@ -47,6 +39,18 @@ function main() {
             }
         });
     });
+
+    if (existsSync(SOCKET_ADDRESS) && force) {
+        unlinkSync(SOCKET_ADDRESS);
+    }
+
+    unixSocketServer.listen({
+        path: SOCKET_ADDRESS,
+        readableAll: true,
+        writableAll: true,
+    }, () => {
+        console.log(`Unix socket server listening at ${SOCKET_ADDRESS}`);
+    });
 }
 
 function readSocketData(data: Buffer): ClockMessage {
@@ -62,6 +66,7 @@ function readSocketData(data: Buffer): ClockMessage {
 function performClockAction(action: ClockMessage, clockEmitter: ClockEmitter) {
     switch (action.type) {
         case ClockMessageType.CUSTOM_TEXT:
+            console.log(`Printing "${action.text}"`);
             clockEmitter.emit('print-text', {text: action.text});
             break;
         case ClockMessageType.PING:
@@ -72,6 +77,7 @@ function performClockAction(action: ClockMessage, clockEmitter: ClockEmitter) {
 }
 
 if (!module.parent) {
+    const args = process.argv.slice(2);
 
     addExitCallback(() => {
         writeFileSync(1, 'Ending clock server...\n');
@@ -80,6 +86,8 @@ if (!module.parent) {
         }
     });
 
-    writeFileSync(1, 'Starting clock server...\n');
-    main();
+    const force = args.includes('--force') || args.includes('-f');
+
+    writeFileSync(1, `${force ? 'Forcibly s' : 'S'}tarting clock server...\n`);
+    main(force);
 }
