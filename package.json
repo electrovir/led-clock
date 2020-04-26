@@ -9,13 +9,12 @@
     "main": "index.js",
     "scripts": {
         "check": "tsc; npm run lint;",
-        "lint": "depcheck --skip-missing=true; sort-package-json --check package.json ./projects/**/package.json; eslint **/*.ts **/*.json; insulate",
+        "lint": "depcheck && sort-package-json --check package.json ./projects/**/package.json && eslint **/*.ts **/*.json && insulate",
+        "lint:check-all": "depcheck; sort-package-json --check package.json ./projects/**/package.json; eslint **/*.ts **/*.json; insulate",
         "lint:fix": "sort-package-json package.json ./projects/**/package.json && eslint --fix **/*.ts **/*.json",
-        "start": "node dist/index.js",
-        "start-detached": "node dist/index.js & echo $!",
-        "test": "npm run compile && npm start",
-        "test:clock-socket": "ts-node -r tsconfig-paths/register projects/clock/src/clock-server.ts && ts-node -r tsconfig-paths/register projects/api-server/src/index.ts",
-        "test:insulate": "node --inspect-brk node_modules/insulation/src/cli.js"
+        "start": "./startup.sh all",
+        "start:api": "./startup.sh api",
+        "start:clock": "sudo ls > /dev/null && (./startup.sh clock &)"
     },
     "dependencies": {
         "catch-exit": "1.0.2",

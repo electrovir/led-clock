@@ -202,7 +202,6 @@
             "error",
             "single"
         ],
-        "require-await": "error",
         "semi": [
             "error",
             "always"

@@ -14,7 +14,8 @@
         "clock": {
             "allow": [
                 "util",
-                "clock-socket"
+                "clock-socket",
+                "clock-config"
             ]
         },
         "clock-socket": {

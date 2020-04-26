@@ -3,7 +3,12 @@ export function overrideDefinedProperties<T extends object, U extends object>(in
     return getObjectTypedKeys(override)
         .filter(key => override[key] != undefined)
         .reduce((accum, key) => {
-            accum[key] = override[key] as any;
+            const newValue = override[key] as any;
+            if (typeof newValue === 'object' && typeof accum[key] === 'object') {
+                accum[key] = overrideDefinedProperties(accum[key] as any, newValue);
+            } else {
+                accum[key] = override[key] as any;
+            }
             return accum;
         }, starter);
 }
