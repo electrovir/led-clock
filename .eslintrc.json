@@ -58,6 +58,30 @@
             "rules": {
                 "sort-keys-fix/sort-keys-fix": "off"
             }
+        },
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parserOptions": {
+                "project": "./tsconfig.json"
+            },
+            "rules": {
+                "@typescript-eslint/ban-ts-comment": "error",
+                "@typescript-eslint/class-literal-property-style": [
+                    "error",
+                    "fields"
+                ],
+                "@typescript-eslint/explicit-member-accessibility": [
+                    "error",
+                    {
+                        "accessibility": "explicit"
+                    }
+                ],
+                "@typescript-eslint/member-delimiter-style": "error",
+                "@typescript-eslint/no-floating-promises": "error",
+                "@typescript-eslint/type-annotation-spacing": "error"
+            }
         }
     ],
     "parser": "@typescript-eslint/parser",
@@ -74,17 +98,6 @@
         "typescript-sort-keys"
     ],
     "rules": {
-        "@typescript-eslint/ban-ts-comment": "error",
-        "@typescript-eslint/class-literal-property-style": [
-            "error",
-            "fields"
-        ],
-        "@typescript-eslint/explicit-member-accessibility": [
-            "error",
-            {
-                "accessibility": "explicit"
-            }
-        ],
         "@typescript-eslint/indent": [
             "error",
             4,
@@ -92,8 +105,6 @@
                 "SwitchCase": 1
             }
         ],
-        "@typescript-eslint/member-delimiter-style": "error",
-        "@typescript-eslint/type-annotation-spacing": "error",
         "array-bracket-newline": [
             "error",
             {
@@ -191,6 +202,7 @@
             "error",
             "single"
         ],
+        "require-await": "error",
         "semi": [
             "error",
             "always"
